@@ -1,0 +1,87 @@
+Show databases;
+Use Sakila;
+
+Show tables;
+Describe actor_info;
+SELECT first_name, last_name from actor_info;
+
+SELECT last_name FROM actor_info WHERE first_name='John';
+SELECT first_name, last_name from actor_info WHERE last_name='Neeson';
+
+SELECT first_name, last_name from actor_info WHERE actor_id % 10=0;
+
+SHOW tables;
+DESCRIBE film_list;
+
+SELECT description FROM film_list WHERE FID=100;
+
+SELECT FID FROM film_list WHERE rating='R';
+SELECT FID from film_list WHERE rating!='R';
+
+SELECT * from film_list ORDER by length ASC LIMIT 10;
+SELECT * from film_list ORDER by length DESC;
+
+DESCRIBE film_list;
+SHOW tables;
+DESCRIBE film;
+
+SELECT * from film WHERE special_features='Deleted Scenes';
+SELECT * from actor_info GROUP BY last_name HAVING COUNT(*)=1; 
+
+SELECT * from actor_info GROUP BY last_name HAVING COUNT(*)>2;
+Describe actor_info;
+Select film_info from actor_info;
+Describe film_list;
+Select actors, COUNT(actors) FROM film_list GROUP BY actors ORDER by 'value occurance' limit 1;
+SELECT category, COUNT(category) FROM film_list GROUP BY category ORDER by 'value occurance' DESC limit 1;
+
+ 
+ SHOW tables;
+ Describe inventory;
+ Describe film;
+ Describe film_list;
+ 
+ Describe rental;
+ Select film_id from film where title='Academy Dinosaur';
+ SELECT return_date from rental where film_id=1;
+ 
+SELECT AVG(length) FROM film;
+Select * from category;
+SELECT AVG(length) FROM film WHERE category='Action'; 
+
+Select description from film;
+Describe film_list;
+SHow tables;
+
+ 
+ Select * from film WHERE description LIKE '%robot%';
+ 
+Select COUNT(film_id) from film WHERE release_year='2010';
+SELECT title from film_list where category LIKE '%horror%';
+
+Describe staff;
+
+Select first_name, last_name From staff WHERE staff_id=2;
+
+Show tables;
+Describe film_list;
+Describe actor_info;
+
+Select actors from film_list;
+Select title from film_list where actors LIKE '%Fred Coster%';
+Select film_info from actor_info WHERE last_name='Costner';
+
+Describe country;
+Select COUNT(country) from country HAVING COUNT(*)=1;
+
+Describe language;
+Select name from language order by name desc;
+
+Select first_name, last_name FROM actor_info where last_name LIKE '%son' ORDer BY last_name asc;
+
+Show tables;
+Describe film_list;
+
+
+SELECT category, COUNT(category) FROM film_list GROUP BY category ORDER by 'value occurance' DESC limit 1;
+
