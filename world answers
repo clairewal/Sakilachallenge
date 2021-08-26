@@ -1,0 +1,60 @@
+Show databases;
+Use world;
+
+SELECT COUNT(ID) FROM city WHERE CountryCode = 'USA';
+SELECT population, lifeexpectancy FROM country WHERE code = 'ARG';
+
+SELECT governmentform, COUNT(governmentform) FROM country GROUP BY governmentform ORDER BY COUNT(governmentform) DESC LIMIT 3;
+SELECT governmentform, COUNT(governmentform) FROM country GROUP BY governmentform ORDER BY 'governmentform' DESC LIMIT 3;
+
+show tables;
+describe countrylanguage;
+
+SELECT name, LifeExpectancy FROM country WHERE LifeExpectancy IS NOT NULL ORDER BY LifeExpectancy DESC LIMIT 1;
+SELECT city.name, country.name FROM country;
+
+SELECT city.name, country.name
+FROM country
+LEFT JOIN city
+ON country.capital=city.ID
+AND country.code=city.countryCode
+WHERE country.code='ESP';
+
+SELECT c1.name FROM city c1 JOIN country c2 ON c1.id=c2.capital WHERE c2.code='ESP';
+
+SELECT LANGUAGE,region
+FROM countrylanguage
+LEFT JOIN country
+ON countrylanguage.CountryCode=country.code
+WHERE country.region='Southeast Asia';
+
+SELECT cl.language FROM countrylanguage cl JOIN country co ON cl.countrycode=co.code WHERE region = 'southeast asia';
+
+SELECT name FROM city WHERE name LIKE 'f%' ORDER BY name LIMIT 25;
+SELECT y.Name FROM country c JOIN city y ON c.Code = y.CountryCode WHERE CountryCode = ('CHN');
+
+SELECT COUNT(ci.name) FROM city ci JOIN country co ON ci.countrycode =co.code WHERE co.code='CHN';
+
+SELECT name, population FROM country WHERE population IS NOT NULL AND population!=0 ORDER BY population LIMIT 10;
+SELECT DISTINCT COUNT(Name) FROM country;
+
+SELECT name, code FROM country WHERE headofstate='Elisabeth II'
+
+SELECT name, code FROM country WHERE HeadOfState = "Elisabeth II";
+
+SELECT Population/SurfaceArea AS population_ratio FROM country WHERE population != 0 ORDER BY population_ratio DESC;
+
+SELECT Population/SurfaceArea AS population_ratio FROM country WHERE population IS NOT NULL AND population!= 0 ORDER BY population_ratio DESC;
+
+SELECT population/surfacearea AS population_area_ratio FROM country WHERE population IS NOT NULL AND population !=0 ORDER BY population_area_ratio DESC LIMIT 10;
+
+SELECT name, gnp FROM country ORDER BY gnp DESC LIMIT 10;
+
+SELECT name FROM country cn JOIN CountryLanguage cl ON cl.countryCode=cn.code WHERE cl.percentage > 50 AND cl.language="German";
+SELECT name, LifeExpectancy FROM country WHERE LifeExpectancy IS NOT NULL AND LifeExpectancy!=0 ORDER BY LifeExpectancy ASC LIMIT 1;
+
+SELECT Dintinct language, count(language) as Frequency
+From countrylanguage
+Group By language
+Order by Frequency DESC
+Limit 10;
